@@ -5,16 +5,24 @@ import { HttpModule } from '@angular/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { ApiModule } from './api/api.module';
+import { AppHelpModule } from './app-help/app-help.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
+    // Angular
     BrowserModule,
     FormsModule,
     HttpModule,
-    AppRoutingModule
+
+    ApiModule,
+    AppHelpModule,
+
+    // This goes last
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
