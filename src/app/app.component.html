@@ -1,7 +1,14 @@
 <div class="navbar">
   Main app component
 </div>
-<a routerLink="/">/</a>
-<a routerLink="/help">/help</a>
-<a routerLink="/api">/api</a>
+<button type="button"
+        routerLink="/"
+        routerLinkActive="active"
+>/</button>
+<button routerLink="/help"
+        routerLinkActive="active"
+>/help</button>
+<button routerLink="/api"
+        routerLinkActive="active"
+>/api</button>
 <router-outlet></router-outlet>

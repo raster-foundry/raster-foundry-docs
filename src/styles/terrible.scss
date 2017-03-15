@@ -5,3 +5,15 @@ img {
   background-color: black;
   padding: 1em;
 }
+
+button {
+  padding: 0.2em 1em 0.2em 1em;
+  margin: .5em 0 .5em 0;
+  background: transparent;
+  border-radius: 2px;
+  border: 2px solid black;
+  &.active {
+    background-color: black;
+    color: white;
+  }
+}
