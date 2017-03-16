@@ -2,3 +2,9 @@
   Api Page
 </p>
 <img src="/assets/logo-raster-foundry.png">
+<div *ngIf="spec">
+  <strong>Base path:</strong> {{spec.basePath}}
+  <div *ngFor="let path of paths">
+    {{path}}
+  </div>
+</div>
