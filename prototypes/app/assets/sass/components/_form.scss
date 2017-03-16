@@ -108,33 +108,3 @@ input[type=radio] {
 .form-group.all-in-one.stacked {
   flex-direction: column;
 }
-
-/* Mailchimp styles */
-.response {
-  padding: 10px;
-  border-radius: 2px;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #353c58;
-
-  &.success {
-    background: $success;
-  }
-
-  &.error {
-    background: $danger;
-    color: #fff;
-  }
-}
-
-#mc_embed_signup .form-group div.mce_inline_error {
-  position: absolute;
-  background: #f98094 !important;
-  border-radius: 2px;
-  font-weight: 400;
-  padding: 5px;
-  left: -10px;
-  top: -10px;
-  font-size: 1.2rem;
-  line-height: 1;
-}

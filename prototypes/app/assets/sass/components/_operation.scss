@@ -66,6 +66,20 @@
     color: #fff;
     background-color: $brand-blue;
     margin-right: .5rem;
+
+    &.get {}
+    &.post {
+      background-color: $success;
+    }
+    &.patch {
+      background-color: $brand-primary;
+    }
+    &.put {
+      background-color: $warning;
+    }
+    &.delete {
+      background-color: $danger;
+    }
   }
 }
 
@@ -133,6 +147,24 @@
   background: $gray-light;
   flex: none;
   width: 100%;
+}
+
+.responses {
+  margin-top: 3rem;
+}
+
+.response {
+  display: flex;
+  border-bottom: 1px solid $gray;
+}
+
+.response-code {
+  padding: 2rem;
+  font-weight: 600;
+}
+
+.response-description {
+  padding: 2rem;
 }
 
 .sample-block {
