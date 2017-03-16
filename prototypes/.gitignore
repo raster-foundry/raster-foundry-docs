@@ -1,0 +1,11 @@
+# Dependency directories
+node_modules
+
+# Logs
+*.log
+
+# Temporary Files
+tmp
+
+# Output Directories
+css

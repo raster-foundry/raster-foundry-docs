@@ -1,0 +1,22 @@
+.navbar {
+  flex: none;
+  height: 56px;
+  display: flex;
+}
+
+.nav-left {
+  padding: 1rem 3rem;
+  border-bottom: 1px solid $gray;
+  flex-basis: 50%;
+}
+
+.nav-right {
+  padding: 1rem 3rem;
+  background-color: darken($shade-normal, 5%);
+  flex-basis: 50%;
+
+  .btn {
+    border: none;
+    padding: 1rem;
+  }
+}
