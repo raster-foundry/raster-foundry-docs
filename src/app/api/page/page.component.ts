@@ -8,18 +8,38 @@ import { SwaggerService } from '../swagger.service';
   providers: [SwaggerService],
 })
 export class ApiPageComponent implements OnInit {
-  spec: any;
+  spec: any = {};
+  resources: Array<any>;
   paths: Array<any>;
+
   constructor(private swaggerService: SwaggerService) { }
 
   ngOnInit() {
     this.swaggerService.fetchSpec().then((spec) => {
-      console.log(spec);
       this.spec = spec;
-      this.paths = Object.keys(this.spec.paths);
+      this.resources = this.parseResources();
+      this.paths = this.parsePaths();
     }, (err) => {
       console.error(err);
     })
+  }
+
+  filterPathsByResource(resourceName: string):Array<any> {
+    return this.paths.filter(p => p['x-resource'] === resourceName);
+  }
+
+  parseResources():Array<any> {
+    return this.spec['x-resources'];
+  }
+
+  parsePaths():Array<any> {
+    let paths = [];
+    (<any>Object).keys(this.spec.paths).forEach(path => {
+      paths.push(
+        (<any>Object).assign({ path }, this.spec.paths[path])
+      );
+    });
+    return paths;
   }
 
 }

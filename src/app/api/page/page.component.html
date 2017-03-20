@@ -1,10 +1,106 @@
-<p>
-  Api Page
-</p>
-<img src="/assets/logo-raster-foundry.png">
-<div *ngIf="spec">
-  <strong>Base path:</strong> {{spec.basePath}}
-  <div *ngFor="let path of paths">
-    {{path}}
+<div class="swagger-docs container row">
+  <app-sidebar>
+    <!-- Display API Docs top matter links (x-top-matter)-->
+    <app-sidebar-section>
+      <li *ngFor="let section of spec['x-top-matter']">
+        <a [ngClass] = "{'sidebar-nav-item': section.level == 2, 'sidebar-nav-heading': section.level == 1}">
+          {{section.title}}
+        </a>
+      </li>
+    </app-sidebar-section>
+
+    <!-- Display API Docs Tags as 'Topics'-->
+    <app-sidebar-section>
+      <li>
+        <a class="sidebar-nav-heading">Topics</a>
+      </li>
+      <li *ngFor="let tag of spec.tags">
+        <a class="sidebar-nav-item">
+          {{tag.name}}
+        </a>
+      </li>
+    </app-sidebar-section>
+
+    <!-- Display API Resources-->
+    <!-- We only pull in paths that reference ('x-resource') a resource from 'x-resources'-->
+    <app-sidebar-section>
+      <li>
+        <a class="sidebar-nav-heading">Core Resources</a>
+      </li>
+      <li *ngFor="let resource of spec['x-resources']">
+        <a class="sidebar-nav-item">
+          {{resource.name}}
+        </a>
+      </li>
+    </app-sidebar-section>
+
+  </app-sidebar>
+  <div class="content column">
+    <app-topbar></app-topbar>
+    <app-main-content>
+
+      <!-- Display API Docs top matter content (x-top-matter) -->
+      <api-operation-section *ngFor="let section of spec['x-top-matter']">
+        <api-operation-details title="{{section.title}}" level={{section.level}}>
+          <p innerHTML="{{section.content}}">
+         </api-operation-details>
+         <api-operation-samples>
+         </api-operation-samples>
+      </api-operation-section>
+
+      <!-- Display API Docs Resources (x-resources) -->
+      <!-- This ng-container could be wrapped in a component -->
+      <ng-container *ngFor="let resource of spec['x-resources']">
+        <api-operation-section>
+          <api-operation-details title="{{resource.name}}" level=3>
+            <p innerHTML="{{resource.description}}"></p>
+            <div *ngFor="let des of resource['further-description']">
+              <h5>{{des.title}}</h5>
+              <p innerHTML="{{des.content}}"></p>
+            </div>
+          </api-operation-details>
+          <api-operation-samples>
+          </api-operation-samples>
+        </api-operation-section>
+        <ng-container *ngFor="let path of filterPathsByResource(resource.name)">
+          <ng-container *ngIf="path.get">
+            <api-operation-section >
+              <api-operation-details title="{{path.get.summary}}" level=3>
+                {{path.path}}
+              </api-operation-details>
+              <api-operation-samples>
+              </api-operation-samples>
+            </api-operation-section>
+          </ng-container>
+          <ng-container *ngIf="path.post">
+            <api-operation-section >
+              <api-operation-details title="{{path.post.summary}}" level=3>
+                {{path.path}}
+              </api-operation-details>
+              <api-operation-samples>
+              </api-operation-samples>
+            </api-operation-section>
+          </ng-container>
+          <ng-container *ngIf="path.put">
+            <api-operation-section >
+              <api-operation-details title="{{path.put.summary}}" level=3>
+                {{path.path}}
+              </api-operation-details>
+              <api-operation-samples>
+              </api-operation-samples>
+            </api-operation-section>
+          </ng-container>
+          <ng-container *ngIf="path.delete">
+            <api-operation-section >
+              <api-operation-details title="{{path.delete.summary}}" level=3>
+                {{path.path}}
+              </api-operation-details>
+              <api-operation-samples>
+              </api-operation-samples>
+            </api-operation-section>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </app-main-content>
   </div>
 </div>

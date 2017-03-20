@@ -17,6 +17,42 @@ produces:
 consumes:
   - application/json
 
+x-top-matter:
+  - title: Introduction
+    level: 1
+    content: |
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+  - title: Using the API
+    level: 2
+    content: |
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+
+      Testing testing testing.
+
+x-resources:
+  - name: Projects
+    description: This describes project resource
+    further-description:
+      - title: Project permissions
+        content: |
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+          Quaerat cupiditate odio nihil tempore, autem ipsam animi voluptate quia deleniti neque amet blanditiis deserunt itaque laudantium voluptas consequatur dolore officiis nulla.
+
+  - name: Scenes
+  - name: Tokens
+  - name: Tools
+
 tags:
   - name: Users
     description: Operations involving users and organizations
@@ -459,6 +495,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   /projects/:
+    x-resource: Projects
     get:
       summary: Get list of projects the user is authorized to view
       tags:
@@ -490,6 +527,7 @@ paths:
           schema:
             $ref: '#/definitions/Project'
   /projects/{uuid}/:
+    x-resource: Projects
     get:
       summary: Retrieve project details
       tags:
@@ -543,6 +581,7 @@ paths:
           schema:
             $ref: '#/definitions/Error'
   /projects/{uuid}/scenes/:
+    x-resource: Projects
     get:
       summary: Get a list of scenes associated with this project
       tags:
@@ -636,6 +675,7 @@ paths:
         204:
           description: No content, delete successful
   /projects/{uuid}/scenes/bulk-add-from-query/:
+    x-resource: Projects
     post:
       summary: Create a new association between a set of scenes and this project
       tags:
@@ -656,6 +696,7 @@ paths:
               $ref: '#/definitions/Scene'
 
   /projects/{uuid}/mosaic/:
+    x-resource: Projects
     get:
       summary: List of a project\'s scene IDs and their associated color correction parameters to be used in mosaicing
       tags:
@@ -668,6 +709,7 @@ paths:
           schema:
             $ref: '#/definitions/MosaicDefinition'
   /projects/{uuid}/mosaic/{uuid2}:
+    x-resource: Projects
     get:
       summary: A project/scene pairing\'s persisted color correction parameters
       tags:
@@ -696,6 +738,7 @@ paths:
         204:
           description: Successfully updated color correction parameters
   /projects/{uuid}/order:
+    x-resource: Projects
     get:
       summary: An ordered list of scene IDs belonging to the specified project
       tags:
