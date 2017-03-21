@@ -1,0 +1,23 @@
+.logo {
+
+  .icon {
+    display: inline-block;
+    vertical-align: middle;
+
+    img {
+      display: block;
+      max-width: 3.5rem;
+      border-radius: 2px;
+    }
+  }
+
+  .path {
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: $brand-primary;
+    margin-left: 5px;
+  }
+}
