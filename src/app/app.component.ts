@@ -1,8 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
+import { SwaggerService } from './services/swagger.service';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  template: `
+    <app-sidebar-container *ngIf="isSpecLoaded" [spec]="spec"></app-sidebar-container>
+    <div class="content column">
+      <app-topbar-container></app-topbar-container>
+      <app-operations-container [spec]="spec"></app-operations-container>
+    </div>
+  `,
+  providers: [SwaggerService]
 })
-export class AppComponent {}
+
+export class AppComponent {
+
+  constructor(private swaggerService: SwaggerService) {}
+
+  @HostBinding('class')
+  private classNames: string = 'container row';
+
+  spec: any = { };
+  isSpecLoaded: boolean = false;
+
+  ngOnInit() {
+    this.swaggerService.fetchSpec().then((spec) => {
+      this.spec = spec;
+      this.isSpecLoaded = true;
+    });
+  }
+}

@@ -1,14 +1,14 @@
-import { RasterFoundryDocsPage } from './app.po';
+import { RasterFoundryApiDocsPage } from './app.po';
 
-describe('raster-foundry-docs App', () => {
-  let page: RasterFoundryDocsPage;
+describe('raster-foundry-api-docs App', () => {
+  let page: RasterFoundryApiDocsPage;
 
   beforeEach(() => {
-    page = new RasterFoundryDocsPage();
+    page = new RasterFoundryApiDocsPage();
   });
 
   it('should display message saying app works', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toEqual('Main app component');
+    expect(page.getParagraphText()).toEqual('app works!');
   });
 });
