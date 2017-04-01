@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@angular/core';
+import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-operation-parameter',
@@ -11,14 +11,20 @@ import { Component, OnInit, HostBinding, Input, Output, EventEmitter } from '@an
       <select class="form-control" *ngIf="shouldShowSelect" (change)="emitChange($event)">
         <option *ngFor="let option of parameter.items.enum">{{option}}</option>
       </select>
-      <input type="text" class="form-control" placeholder="{{parameter.type}}" *ngIf="!shouldShowSelect" (change)="emitChange($event)" (keyup)="emitChange($event)">
+
+      <input type="text"
+             class="form-control"
+             placeholder="{{parameter.type}}"
+             *ngIf="!shouldShowSelect"
+             (change)="emitChange($event)"
+             (keyup)="emitChange($event)">
+
       <div class="parameter-requirement">{{requirement}}</div>
     </div>
     <div class="parameter-description">{{parameter.description}}</div>
-  `,
-  styles: []
+  `
 })
-export class OperationParameterComponent implements OnInit {
+export class OperationParameterComponent {
 
   constructor() { }
 
@@ -29,8 +35,6 @@ export class OperationParameterComponent implements OnInit {
 
   @Output() onChange: EventEmitter<any> = new EventEmitter;
 
-  ngOnInit() { }
-
   get shouldShowSelect(): boolean {
     if (this.parameter.items && this.parameter.items.enum) {
       return Boolean(this.parameter.items.enum.length);
@@ -39,8 +43,7 @@ export class OperationParameterComponent implements OnInit {
   }
 
   get requirement(): string {
-    const required = this.parameter.required || false;
-    return required ? 'required' : 'optional';
+    return this.parameter.required ? 'required' : 'optional';
   }
 
   emitChange(event): void {

@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 import { SwaggerService } from '../services/swagger.service';
 
 @Component({
@@ -40,8 +40,7 @@ import { SwaggerService } from '../services/swagger.service';
   providers: [ SwaggerService ]
 })
 
-export class SidebarContainerComponent implements OnInit {
-
+export class SidebarContainerComponent {
 
   constructor(private swaggerService: SwaggerService) { }
 
@@ -50,11 +49,10 @@ export class SidebarContainerComponent implements OnInit {
 
   @Input('spec') spec: any = { };
 
-  ngOnInit() { }
-
   get topMatter(): any[] {
-    if (this.spec.hasOwnProperty('x-top-matter')) {
-      return this.spec['x-top-matter'].map(section => {
+    const topMatter: any = this.spec['x-top-matter']
+    if (topMatter) {
+      return topMatter.map(section => {
         const isHeading: boolean = section.level == 1;
         return {
           label: section.title,
@@ -66,16 +64,10 @@ export class SidebarContainerComponent implements OnInit {
   }
 
   get topics(): any[] {
-    if (this.spec.hasOwnProperty('tags')) {
-      return this.spec['tags'];
-    }
-    return [];
+    return this.spec['tags'] || [];
   }
 
   get coreResources(): any[] {
-    if (this.spec.hasOwnProperty('x-resources')) {
-      return this.spec['x-resources'];
-    }
-    return [];
+    return this.spec['x-resources'] || [];
   }
 }

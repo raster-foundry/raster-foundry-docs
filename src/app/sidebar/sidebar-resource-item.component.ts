@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-resource-item',
@@ -9,15 +9,14 @@ import { Component, OnInit, HostBinding, Input } from '@angular/core';
     </app-sidebar-section>
   `
 })
-export class SidebarResourceItemComponent implements OnInit {
+export class SidebarResourceItemComponent {
 
   constructor() { }
+
   // @TODO: this will be dynamic and default to false when we begin to detect which resource is in view
   @HostBinding('class.expanded') private isExpanded: boolean = true;
   @Input('resource') resource: any = { };
   @Input('spec') spec: any = { };
-
-  ngOnInit() { }
 
   get matchingPaths(): any[] {
     if (this.spec && this.resource) {
@@ -31,7 +30,9 @@ export class SidebarResourceItemComponent implements OnInit {
     const paths = this.matchingPaths;
     if (paths.length) {
       const methods = paths.map(path => {
-        return Object.keys(path).map(key => path[key]).filter(method => method.hasOwnProperty('summary'))
+        return Object.keys(path)
+          .map(key => path[key])
+          .filter(method => method.summary)
       });
       return [].concat.apply([], methods);
     }

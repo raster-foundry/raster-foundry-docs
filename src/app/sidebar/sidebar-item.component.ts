@@ -1,12 +1,12 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-item',
   template: `
-    <a [ngClass]="computeClasses()">{{section.label}}</a>
+    <a class={{labelClass}}>{{section.label}}</a>
   `
 })
-export class SidebarItemComponent implements OnInit {
+export class SidebarItemComponent {
 
   constructor() { }
 
@@ -15,13 +15,7 @@ export class SidebarItemComponent implements OnInit {
 
   @Input('section') section: any = {};
 
-  computeClasses(): any {
-    return {
-      'sidebar-nav-heading': this.section.isHeading,
-      'sidebar-nav-item': !this.section.isHeading
-    };
+  get labelClass(): string {
+    return this.section.isHeading ? 'sidebar-nav-heading' : 'sidebar-nav-item';
   }
-
-  ngOnInit() { }
-
 }

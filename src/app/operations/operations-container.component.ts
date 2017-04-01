@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-operations-container',
@@ -19,7 +19,7 @@ import { Component, OnInit, HostBinding, Input } from '@angular/core';
     </ng-container>
   `
 })
-export class OperationsContainerComponent implements OnInit {
+export class OperationsContainerComponent {
 
   constructor() { }
 
@@ -28,21 +28,12 @@ export class OperationsContainerComponent implements OnInit {
 
   @Input('spec') spec: any = { };
 
-  ngOnInit() {
-  }
-
   get topMatter(): any[] {
-    if (this.spec) {
-      return this.spec['x-top-matter'];
-    }
-    return [];
+    return this.spec['x-top-matter'] || [];
   }
 
   get coreResources(): any[] {
-    if (this.spec.hasOwnProperty('x-resources')) {
-      return this.spec['x-resources'];
-    }
-    return [];
+    return this.spec['x-resources'] || [];
   }
 
 }

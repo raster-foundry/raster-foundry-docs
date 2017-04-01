@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-topbar-container',
@@ -10,10 +10,9 @@ import { Component, OnInit, HostBinding } from '@angular/core';
     <nav class="nav-right">
       <a href="#" class="btn btn-secondary">curl</a>
     </nav>
-  `,
-  styles: []
+  `
 })
-export class TopbarContainerComponent implements OnInit {
+export class TopbarContainerComponent {
 
   constructor() { }
 
@@ -22,8 +21,4 @@ export class TopbarContainerComponent implements OnInit {
 
   private apiTokenEnabled: boolean = false;
   private loginEnabled: boolean = false;
-
-  ngOnInit() {
-  }
-
 }

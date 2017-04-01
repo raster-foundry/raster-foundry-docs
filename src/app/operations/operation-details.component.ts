@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-operation-details',
@@ -7,10 +7,9 @@ import { Component, OnInit, HostBinding, Input } from '@angular/core';
     <div [class]="headingClassNames" *ngIf="title">{{title}}</div>
     <p [innerHTML]="content" *ngIf="content"></p>
     <ng-content></ng-content>
-  `,
-  styles: []
+  `
 })
-export class OperationDetailsComponent implements OnInit {
+export class OperationDetailsComponent {
 
   constructor() { }
 
@@ -21,9 +20,6 @@ export class OperationDetailsComponent implements OnInit {
   @Input('content') content: string = '';
   @Input('level') level: number = 5;
   @Input('parent') parent: string = '';
-
-  ngOnInit() {
-  }
 
   get headingClassNames(): string {
     return `h${this.level}`;

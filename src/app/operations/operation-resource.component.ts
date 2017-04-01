@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-operation-resource',
@@ -23,10 +23,9 @@ import { Component, OnInit, Input } from '@angular/core';
         </app-operation-samples>
       </app-operation-container>
     </ng-container>
-  `,
-  styles: []
+  `
 })
-export class OperationResourceComponent implements OnInit {
+export class OperationResourceComponent {
 
   constructor() { }
 
@@ -35,20 +34,19 @@ export class OperationResourceComponent implements OnInit {
 
   parameterValues: any = { };
 
-  ngOnInit() {
-  }
-
   get matchingPaths(): any[] {
     if (this.spec && this.resource) {
-      const paths = Object.keys(this.spec.paths).map(key => Object.assign(this.spec.paths[key], { path: key }));
-      return paths.filter(path => path['x-resource'] == this.resource.name);
+      return Object.keys(this.spec.paths)
+        .map(key => Object.assign(this.spec.paths[key], { path: key }))
+        .filter(path => path['x-resource'] == this.resource.name);
     }
     return [];
   }
 
   matchingMethods(path): any[] {
-    const methods = Object.keys(path).map(key => Object.assign(path[key], { methodType: key })).filter(method => method.hasOwnProperty('summary'));
-    return methods;
+    return Object.keys(path)
+      .map(key => Object.assign(path[key], { methodType: key }))
+      .filter(method => method.summary);
   }
 
   handleParameterChange(event): void {

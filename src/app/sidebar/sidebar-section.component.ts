@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding, Input } from '@angular/core';
+import { Component, HostBinding, Input } from '@angular/core';
 
 @Component({
   selector: 'app-sidebar-section',
@@ -7,7 +7,7 @@ import { Component, OnInit, HostBinding, Input } from '@angular/core';
     <ng-content></ng-content>
   `
 })
-export class SidebarSectionComponent implements OnInit {
+export class SidebarSectionComponent {
 
   constructor() { }
 
@@ -19,8 +19,4 @@ export class SidebarSectionComponent implements OnInit {
   shouldShowTitle(): boolean {
     return Boolean(this.title);
   }
-
-  ngOnInit() {
-  }
-
 }

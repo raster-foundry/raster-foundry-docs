@@ -1,4 +1,4 @@
-import { Component, OnInit, HostBinding } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 
 @Component({
   selector: 'app-operation-container',
@@ -6,17 +6,13 @@ import { Component, OnInit, HostBinding } from '@angular/core';
     <div class="operation-area">
       <ng-content></ng-content>
     </div>
-  `,
-  styles: []
+  `
 })
-export class OperationContainerComponent implements OnInit {
+export class OperationContainerComponent {
 
   constructor() { }
 
   @HostBinding('class')
   private classNames: string = 'operation';
-
-  ngOnInit() {
-  }
 
 }
