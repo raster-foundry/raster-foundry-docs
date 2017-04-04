@@ -19,7 +19,7 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles/main.scss"
       ],
         "scripts": [
             "../node_modules/swagger-parser/dist/swagger-parser.js"
@@ -54,6 +54,10 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+      "spec": false,
+      "inlineStyle": true,
+      "inlineTemplate": true
+    }
   }
 }
