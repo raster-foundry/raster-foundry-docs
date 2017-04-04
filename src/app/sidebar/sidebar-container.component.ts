@@ -50,24 +50,32 @@ export class SidebarContainerComponent {
   @Input('spec') spec: any = { };
 
   get topMatter(): any[] {
-    const topMatter: any = this.spec['x-top-matter']
-    if (topMatter) {
-      return topMatter.map(section => {
-        const isHeading: boolean = section.level == 1;
-        return {
-          label: section.title,
-          isHeading: isHeading
-        };
-      });
+    if (this.spec) {
+      const xTopMatter: any = this.spec['x-top-matter']
+      if (xTopMatter) {
+        return xTopMatter.map(section => {
+          const isHeading: boolean = section.level == 1;
+          return {
+            label: section.title,
+            isHeading: isHeading
+          };
+        });
+      }
     }
     return [];
   }
 
   get topics(): any[] {
-    return this.spec['tags'] || [];
+    if (this.spec) {
+      return this.spec['tags'] || [];
+    }
+    return [];
   }
 
   get coreResources(): any[] {
-    return this.spec['x-resources'] || [];
+    if (this.spec) {
+      return this.spec['x-resources'] || [];
+    }
+    return [];
   }
 }

@@ -29,11 +29,17 @@ export class OperationsContainerComponent {
   @Input('spec') spec: any = { };
 
   get topMatter(): any[] {
-    return this.spec['x-top-matter'] || [];
+    if (this.spec) {
+      return this.spec['x-top-matter'] || [];
+    }
+    return [];
   }
 
   get coreResources(): any[] {
-    return this.spec['x-resources'] || [];
+    if (this.spec)  {
+      return this.spec['x-resources'] || [];
+    }
+    return [];
   }
 
 }
