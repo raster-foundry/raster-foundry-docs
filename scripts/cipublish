@@ -1,0 +1,27 @@
+#!/bin/bash
+set -e
+
+if [[ -n "${RF_DEBUG}" ]]; then
+    set -x
+fi
+
+DIR="$(dirname "$0")"
+
+function usage() {
+    echo -n \
+         "Usage: $(basename "$0")
+Deploy documentation website.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
+        usage
+    else
+        # Copy static site from angularjs container to S3
+        if [[ -n "${RF_DOCS_BUCKET}" ]]; then
+            echo "Uploading to ${RF_DOCS_BUCKET}"
+            aws s3 sync --delete "${DIR}/../dist" "s3://${RF_DOCS_BUCKET}/docs"
+        fi
+    fi
+fi
