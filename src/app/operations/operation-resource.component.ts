@@ -4,7 +4,9 @@ import { Component, Input } from '@angular/core';
   selector: 'app-operation-resource',
   template: `
     <app-operation-container>
-      <app-operation-details [title]="resource.name" [content]="resource.description" [level]=2></app-operation-details>
+      <app-operation-details [title]="resource.name"
+                             [content]="resource.description"
+                             [level]=2></app-operation-details>
       <app-operation-samples></app-operation-samples>
     </app-operation-container>
     <ng-container *ngFor="let path of matchingPaths">
@@ -12,11 +14,16 @@ import { Component, Input } from '@angular/core';
         <app-operation-details
           [parent]="resource.name"
           [title]="method.summary"
-          [content]="method.summary"
+          [content]="method.description"
           [level]=3
         >
-          <app-operation-path [methodType]="method.methodType" [path]="path.path"></app-operation-path>
-          <app-operation-parameters [method]="method" *ngIf="method.parameters.length" (onParameterChange)="handleParameterChange($event)"></app-operation-parameters>
+          <app-operation-path [methodType]="method.methodType" [path]="path.path">
+          </app-operation-path>
+          <app-operation-parameters
+            [method]="method"
+            *ngIf="method.parameters && method.parameters.length"
+            (onParameterChange)="handleParameterChange($event)">
+          </app-operation-parameters>
         </app-operation-details>
         <app-operation-samples>
           <app-operation-sample-request [path]="path.path" [parameters]="parameterValues"></app-operation-sample-request>
