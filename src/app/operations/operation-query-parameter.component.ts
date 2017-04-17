@@ -1,7 +1,7 @@
 import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
-  selector: 'app-operation-parameter',
+  selector: 'app-operation-query-parameter',
   template: `
     <div class="parameter-details">
       <label class="parameter-name" for="ordering">{{parameter.name}}</label>
@@ -24,7 +24,7 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
     <div class="parameter-description">{{parameter.description}}</div>
   `
 })
-export class OperationParameterComponent {
+export class OperationQueryParameterComponent {
 
   constructor() { }
 
