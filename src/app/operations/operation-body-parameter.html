@@ -17,7 +17,10 @@
             autocapitalize="off"
             spellcheck="false"
             [rows]="parametersJson.split('\n').length"
-            [(ngModel)]="parametersJson"></textarea>
+            [value]="parametersJson"
+            (input)="onJsonChange($event.target.value)"
+  ></textarea>
+  <div class="json-error color-danger" *ngIf="errorMessage">{{errorMessage}}</div>
 </div>
 <div class="tab-body" *ngIf="!showJson">
   <div class="json-example">

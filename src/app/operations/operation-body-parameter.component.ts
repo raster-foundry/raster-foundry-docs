@@ -8,10 +8,20 @@ import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@an
 export class OperationBodyParameterComponent implements OnInit {
 
   private showJson: boolean = false;
+  private parametersJson: string;
+  private errorMessage: string;
 
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.onJsonChange(
+      '{' +
+        this.parameters.map((parameter) => this.combineSchemaProperties(parameter)).map(
+          (parametersArray) => parametersArray.map(
+            (parameter) => `\n  "${parameter.name}": ${parameter.example || '"' + parameter.type + '"'}`)
+        ) + '\n}'
+    );
+  }
 
   @HostBinding('class')
   private classNames: string = 'parameter body';
@@ -19,18 +29,6 @@ export class OperationBodyParameterComponent implements OnInit {
   @Input('parameters') parameters: any[] = [{}];
 
   @Output() onChange: EventEmitter<any> = new EventEmitter;
-
-  emitChange(event): void {
-    this.onChange.emit(event);
-  }
-
-  get parametersJson() {
-    return '{' +
-      this.parameters.map((parameter) => this.combineSchemaProperties(parameter)).map(
-        (parametersArray) => parametersArray.map(
-          (parameter) => `\n  "${parameter.name}": ${parameter.output || parameter.example || parameter.type}`)
-      ) + '\n}';
-  }
 
   isObjectParameter(parameter): boolean {
     return parameter.type === 'object' ||
@@ -82,5 +80,19 @@ export class OperationBodyParameterComponent implements OnInit {
       properties = [parameter]
     }
     return properties
+  }
+
+  onJsonChange(jsonString) {
+    this.parametersJson = jsonString;
+    try {
+      this.onChange.emit({value: JSON.stringify(JSON.parse(jsonString))})
+      this.errorMessage = null;
+    } catch(e) {
+      if (e instanceof SyntaxError) {
+        this.errorMessage = e.message;
+      } else {
+        throw e;
+      }
+    }
   }
 }
