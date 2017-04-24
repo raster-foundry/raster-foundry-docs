@@ -8,24 +8,24 @@ import { Component, HostBinding, Input, Output, EventEmitter } from '@angular/co
       <code class="parameter-type {{parameter.type}}">{{parameter.type}}</code>
     </div>
     <div class="parameter-input">
-      <select class="form-control" *ngIf="shouldShowSelect" (change)="emitChange($event)">
+      <select class="form-control"
+              *ngIf="shouldShowSelect"
+              (input)="emitChange($event)">
+        <option *ngIf="requirement === 'optional'"></option>
         <option *ngFor="let option of parameter.items.enum">{{option}}</option>
       </select>
 
       <input type="text"
+             *ngIf="!shouldShowSelect"
              class="form-control"
              placeholder="{{parameter.type}}"
-             *ngIf="!shouldShowSelect"
-             (change)="emitChange($event)"
-             (keyup)="emitChange($event)">
-
+             (input)="emitChange($event)">
       <div class="parameter-requirement">{{requirement}}</div>
     </div>
     <div class="parameter-description">{{parameter.description}}</div>
   `
 })
 export class OperationQueryParameterComponent {
-
   constructor() { }
 
   @HostBinding('class')
@@ -47,6 +47,6 @@ export class OperationQueryParameterComponent {
   }
 
   emitChange(event): void {
-    this.onChange.emit(event);
+    this.onChange.emit({name: this.parameter.name, value: event.target.value, event: event});
   }
 }
