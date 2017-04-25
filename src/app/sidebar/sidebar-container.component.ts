@@ -15,7 +15,7 @@ import { SwaggerService } from '../services/swagger.service';
       </div>
     </header>
 
-    <nav class="sidebar-nav">
+    <nav class="sidebar-nav" perfect-scrollbar>
       <!-- Top Matter Navigation -->
       <app-sidebar-section>
         <app-sidebar-item *ngFor="let section of topMatter" [section]=section>
