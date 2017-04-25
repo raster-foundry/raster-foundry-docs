@@ -4,3 +4,14 @@ app-sidebar-item {
 app-sidebar-section {
   display: block;
 }
+
+.nav-left {
+  .btn-group {
+    margin: 0.5rem 0;
+  }
+}
+
+.nav-form{
+  display: flex;
+  flex: 1;
+}

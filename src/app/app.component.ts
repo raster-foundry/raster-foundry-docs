@@ -7,7 +7,7 @@ import { SwaggerService } from './services/swagger.service';
     <app-sidebar-container *ngIf="isSpecLoaded" [spec]="spec"></app-sidebar-container>
     <div class="content column">
       <app-topbar-container></app-topbar-container>
-      <app-operations-container [spec]="spec"></app-operations-container>
+      <app-operations-container perfect-scrollbar [spec]="spec"></app-operations-container>
     </div>
   `,
   providers: [SwaggerService]

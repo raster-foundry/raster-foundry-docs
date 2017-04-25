@@ -5,6 +5,6 @@ export class SettingsService {
 
   constructor() { }
 
-  public domain: string = 'https://api.rasterfoundry.com';
+  public domain: string = 'https://app.staging.rasterfoundry.com/api';
 
 }
