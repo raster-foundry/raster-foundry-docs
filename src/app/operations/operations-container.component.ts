@@ -5,13 +5,17 @@ import { Component, HostBinding, Input } from '@angular/core';
   template: `
     <!-- Top matter content -->
     <app-operation-container *ngFor="let section of topMatter">
-      <app-operation-details [title]="section.title" [content]="section.content" [level]="section.level"></app-operation-details>
+      <app-operation-details [id]="section.title"
+                             [title]="section.title"
+                             [content]="section.content"
+                             [level]="section.level"></app-operation-details>
       <app-operation-samples></app-operation-samples>
     </app-operation-container>
 
     <!-- Operations content -->
     <app-operation-container>
-      <app-operation-details title="Core Resources" [level]=1></app-operation-details>
+      <app-operation-details id="Core Resources"
+                             title="Core Resources" [level]=1></app-operation-details>
       <app-operation-samples></app-operation-samples>
     </app-operation-container>
     <ng-container *ngFor="let resource of coreResources">
@@ -26,7 +30,7 @@ export class OperationsContainerComponent {
   @HostBinding('class')
   private classNames: string = 'operations';
 
-  @Input('spec') spec: any = { };
+  @Input('spec') spec: any = {};
 
   get topMatter(): any[] {
     if (this.spec) {
@@ -36,10 +40,9 @@ export class OperationsContainerComponent {
   }
 
   get coreResources(): any[] {
-    if (this.spec)  {
+    if (this.spec) {
       return this.spec['x-resources'] || [];
     }
     return [];
   }
-
 }

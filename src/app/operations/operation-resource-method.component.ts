@@ -5,6 +5,7 @@ import { Component, Input } from '@angular/core';
   template: `
 <app-operation-container>
   <app-operation-details
+    [id]="pathId"
     [parent]="resource.name"
     [title]="method.summary"
     [content]="method.description"
@@ -69,5 +70,9 @@ export class OperationResourceMethodComponent {
         this.bodyParameters = Object.assign({}, this.bodyParameters);
       }
     }
+  }
+
+  get pathId() {
+    return `${this.path.path}#${this.method.methodType}`;
   }
 }

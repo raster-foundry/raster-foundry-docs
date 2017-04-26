@@ -3,7 +3,8 @@ import { Component, HostBinding, Input } from '@angular/core';
 @Component({
   selector: 'app-sidebar-item',
   template: `
-    <a class={{labelClass}}>{{section.label}}</a>
+    <a [href]="'#' + section.label"
+       class={{labelClass}}>{{section.label}}</a>
   `
 })
 export class SidebarItemComponent {

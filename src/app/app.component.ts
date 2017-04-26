@@ -15,18 +15,23 @@ import { SwaggerService } from './services/swagger.service';
 
 export class AppComponent {
 
-  constructor(private swaggerService: SwaggerService) {}
+  constructor(private swaggerService: SwaggerService) { }
 
   @HostBinding('class')
   private classNames: string = 'container row';
 
-  spec: any = { };
+  spec: any = {};
   isSpecLoaded: boolean = false;
 
   ngOnInit() {
+    let loadingHash = location.hash;
+    location.hash = '';
     this.swaggerService.fetchSpec().then((spec) => {
       this.spec = spec;
       this.isSpecLoaded = true;
+      setTimeout(() => {
+        location.hash = loadingHash;
+      });
     });
   }
 }
