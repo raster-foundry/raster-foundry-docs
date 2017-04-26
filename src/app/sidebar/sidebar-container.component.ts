@@ -22,13 +22,13 @@ import { SwaggerService } from '../services/swagger.service';
         </app-sidebar-item>
       </app-sidebar-section>
 
-      <!-- Topics(tags) -->
+      <!-- Topics(tags)>
       <app-sidebar-section title="Topics">
         <a class="sidebar-nav-item" *ngFor="let topic of topics">{{topic.name}}</a>
-      </app-sidebar-section>
+      </app-sidebar-section -->
 
       <!-- Core Resources -->
-      <app-sidebar-section title="Core Resources">
+      <app-sidebar-section href="#Core Resources" title="Core Resources">
         <app-sidebar-resource-item *ngFor="let resource of coreResources"
                                    [resource]="resource"
                                    [spec]="spec"
@@ -37,7 +37,7 @@ import { SwaggerService } from '../services/swagger.service';
       </app-sidebar-section>
     </nav>
   `,
-  providers: [ SwaggerService ]
+  providers: [SwaggerService]
 })
 
 export class SidebarContainerComponent {
@@ -47,7 +47,7 @@ export class SidebarContainerComponent {
   @HostBinding('class')
   private classNames: string = 'sidebar column';
 
-  @Input('spec') spec: any = { };
+  @Input('spec') spec: any = {};
 
   get topMatter(): any[] {
     if (this.spec) {

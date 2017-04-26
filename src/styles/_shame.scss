@@ -11,7 +11,16 @@ app-sidebar-section {
   }
 }
 
-.nav-form{
+.nav-form {
   display: flex;
   flex: 1;
+}
+
+@media (max-width: 1100px) {
+  .operation-area {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none;
+  }
 }
