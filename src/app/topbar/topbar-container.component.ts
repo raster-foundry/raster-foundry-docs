@@ -54,11 +54,11 @@ export class TopbarContainerComponent {
   apiTokenEnabled: boolean = true;
   loginEnabled: boolean = false;
 
-  private error: string | void = 'No Token';
+  error: string | void = 'No Token';
   private jwtHelper: JwtHelper = new JwtHelper();
-  private token: string = '';
-  private refreshToken: string = '';
-  private useRefreshToken: boolean = true;
+  token: string = '';
+  refreshToken: string = '';
+  useRefreshToken: boolean = true;
 
   constructor(private authService: AuthService, private settingsService: SettingsService) { }
 
