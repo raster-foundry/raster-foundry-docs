@@ -7,9 +7,9 @@ import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@an
 })
 export class OperationBodyParameterComponent implements OnInit {
 
-  private showJson: boolean = false;
   private parametersJson: string;
   private errorMessage: string;
+  showJson: boolean = false;
 
   constructor() { }
 

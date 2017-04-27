@@ -33,9 +33,9 @@ import { Component, Input } from '@angular/core';
 })
 export class OperationResourceMethodComponent {
 
-  private uriParameters: any = {};
-  private queryParameters: any = {};
-  private bodyParameters: any = {};
+  uriParameters: any = {};
+  queryParameters: any = {};
+  bodyParameters: any = {};
 
   constructor() { }
 

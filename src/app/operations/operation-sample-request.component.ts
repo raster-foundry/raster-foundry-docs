@@ -21,10 +21,11 @@ curl -i \\
 export class OperationSampleRequestComponent implements OnInit, OnChanges {
 
   private parsedUriParameters: any;
-  private parsedQueryParameters: any;
-  private uriParams: string;
+  parsedQueryParameters: any;
+  uriParams: string;
+  domain: string;
 
-  constructor(private settingsService: SettingsService, private authService: AuthService) { }
+  constructor(private settingsService: SettingsService, public authService: AuthService) { }
 
   @HostBinding('class')
   private classNames: string = 'sample-block';
@@ -36,7 +37,6 @@ export class OperationSampleRequestComponent implements OnInit, OnChanges {
   @Input('queryParameters') queryParameters: any = { };
   @Input('bodyParameters') bodyParameters: any = { };
 
-  private domain: string;
 
   ngOnInit() {
     this.domain = this.settingsService.domain;

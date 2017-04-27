@@ -22,9 +22,9 @@ import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@an
 })
 export class OperationParametersComponent implements OnInit {
 
-  private queryParams: string[];
-  private pathParams: string[];
-  private bodyParams: Object[];
+  queryParams: string[];
+  pathParams: string[];
+  bodyParams: Object[];
 
   constructor() { }
 
