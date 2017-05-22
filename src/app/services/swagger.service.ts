@@ -17,7 +17,8 @@ export class SwaggerService {
       let isLocalhost = hostname.includes('localhost');
       let specUrl: string;
       if (isLocalhost) {
-        specUrl = 'https://spec.staging.rasterfoundry.com';
+        specUrl = 'https://spec.rasterfoundry.com';
+        // specUrl = '/assets/spec.yml'; // uncomment to use assets/spec.yml as the spec instead
       } else {
         let parts = hostname.split('.');
         parts[0] = 'spec';

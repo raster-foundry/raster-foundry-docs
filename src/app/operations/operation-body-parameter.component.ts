@@ -60,22 +60,21 @@ export class OperationBodyParameterComponent implements OnInit {
     let schema = parameter.schema
     let properties: any[] = [];
 
-    if (schema && schema.allOf ) {
-      schema.allOf.forEach((schemaItem) => {
+    function concatPropsForItem(schemaItem) {
+      if (schemaItem && schemaItem.allOf) {
+        schemaItem.allOf.forEach(concatPropsForItem);
+      } else if (schemaItem && schemaItem.properties){
         properties = properties.concat(
           Object.keys(schemaItem.properties)
             .map((key)=> {
               return Object.assign(schemaItem.properties[key], {name: key});
             }).filter((item) => !item.readOnly)
         );
-      });
-    } else if (schema.properties){
-        properties = properties.concat(
-          Object.keys(schema.properties)
-            .map((key)=> {
-              return Object.assign(schema.properties[key], {name: key});
-            }).filter((item) => !item.readOnly)
-        );
+      }
+    }
+
+    if (schema && schema.allOf || schema.properties) {
+      concatPropsForItem(schema)
     } else if (schema.type === 'array') {
       properties = [parameter]
     }
