@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
 
 declare var SwaggerParser:any;
 
 @Injectable()
 export class SwaggerService {
 
-  constructor() { }
+  spec: any;
+  error: any;
+
+  constructor(private http: Http) { }
 
   public fetchSpec(): Promise<any> {
     return new Promise((resolve, reject) => {
@@ -14,20 +18,29 @@ export class SwaggerService {
       let specUrl: string;
       if (isLocalhost) {
         specUrl = 'https://spec.staging.rasterfoundry.com';
-        // specUrl = '/assets/spec.yml'; // uncomment to use assets/spec.yml as the spec instead
       } else {
         let parts = hostname.split('.');
         parts[0] = 'spec';
-        specUrl = 'http://' + parts.join('.');
+        specUrl = 'https://' + parts.join('.');
       }
-      SwaggerParser.dereference(specUrl).then((file: Object) => {
-        resolve(file);
-      }, (err) => {
-        if (err.message === 'XHR error' && isLocalhost) {
-          console.error(`Unable to fetch the spec due to CORS restrictions. Disable CORS or use a local spec in swagger.service.ts`);
+
+      this.http.get(specUrl).subscribe(response => {
+        try {
+          let parsed = SwaggerParser.YAML.parse(response.text());
+          SwaggerParser.dereference(parsed).then((file: Object) => {
+            resolve(file);
+          }, (err) => {
+            reject(err)
+          });
         }
-        reject(err)
+        catch(e) {
+          reject(e)
+        }
+      }, error => {
+        this.error = <any>error
+        reject(error);
       });
+
     })
   }
 }
