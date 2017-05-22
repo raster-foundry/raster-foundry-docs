@@ -89,7 +89,7 @@ export class AuthService {
   }
 
   public getSessionToken(refreshToken: string): Observable<any> {
-    let requestUrl = `${this.settingsService.domain}/tokens`
+    let requestUrl = `${this.settingsService.apiUrl}/tokens`
     return this.http.post(requestUrl, {refresh_token: refreshToken});
   }
 }
