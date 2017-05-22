@@ -1,0 +1,26 @@
+app-sidebar-item {
+  display: list-item;
+}
+app-sidebar-section {
+  display: block;
+}
+
+.nav-left {
+  .btn-group {
+    margin: 0.5rem 0;
+  }
+}
+
+.nav-form {
+  display: flex;
+  flex: 1;
+}
+
+@media (max-width: 1100px) {
+  .operation-area {
+    flex-direction: column;
+  }
+  .sidebar {
+    display: none;
+  }
+}

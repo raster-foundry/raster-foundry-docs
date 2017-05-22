@@ -1,0 +1,34 @@
+#!/bin/bash
+set -e
+
+if [[ -n "${RF_DEBUG}" ]]; then
+    set -x
+fi
+
+DIR="$(dirname "$0")"
+
+function usage() {
+    echo -n \
+         "Usage: $(basename "$0")
+Build application for staging or a release.
+"
+}
+
+if [ "${BASH_SOURCE[0]}" = "${0}" ]; then
+    if [ "${1:-}" = "--help" ]; then
+        usage
+    else
+      if [[ -n "${RF_DOCS_BUCKET}" ]]; then
+          echo "Building docs container"
+          docker-compose build docs
+
+          echo "Building static bundle"
+          docker-compose run --rm docs build --pure-lockfile
+          # Test static site transfer from angularjs container to S3
+          echo "Testing static site upload"
+          aws s3 sync --delete --dryrun "${DIR}/../dist" "s3://${RF_DOCS_BUCKET}/docs"
+      else
+        echo "ERROR: No RF_DOCS_BUCKET specified"
+      fi
+    fi
+fi

@@ -1,0 +1,45 @@
+<div class="tab-header">
+  <div class="tab-select"
+       (click)="showJson = false"
+       [ngClass]="{'active': !showJson}">
+    Format
+  </div>
+  <div class="tab-select"
+       (click)="showJson = true"
+       [ngClass]="{'active': showJson}">
+    Json
+  </div>
+</div>
+<div class="tab-body" *ngIf="showJson">
+  <textarea class="form-control"
+            autocomplete="off"
+            autocorrect="off"
+            autocapitalize="off"
+            spellcheck="false"
+            [rows]="parametersJson.split('\n').length"
+            [value]="parametersJson"
+            (input)="onJsonChange($event.target.value)"
+  ></textarea>
+  <div class="json-error color-danger" *ngIf="errorMessage">{{errorMessage}}</div>
+</div>
+<div class="tab-body" *ngIf="!showJson">
+  <div class="json-example">
+    <ng-container *ngFor="let parameter of parameters" >
+      <ng-container *ngFor="let property of getParameterProperties(parameter)">
+        <div class="json-entry">
+          <div class="json-key">
+            {{property.name}}:
+          </div>
+          <div class="json-value">
+            <code class="parameter-type {{property.type || property.schema && 'object'}}">
+            {{property.type || property.schema && property.schema.type || property.name + ' schema' }}
+            </code>
+          </div>
+          <div class="json-description" *ngIf="property.description">
+            {{property.description}}
+          </div>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

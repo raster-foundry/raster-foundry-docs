@@ -1,11 +1,11 @@
 import { browser, element, by } from 'protractor';
 
-export class RasterFoundryDocsPage {
+export class RasterFoundryApiDocsPage {
   navigateTo() {
     return browser.get('/');
   }
 
   getParagraphText() {
-    return element(by.css('div.navbar')).getText();
+    return element(by.css('app-root h1')).getText();
   }
 }

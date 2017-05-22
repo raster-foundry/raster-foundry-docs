@@ -1,0 +1,57 @@
+.tab-header {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  div {
+    padding: 0.5em;
+    flex: 1;
+    text-align: center;
+    background: #f3f3f3;
+    cursor: pointer;
+    &.active {
+      cursor: auto;
+      background: initial;
+    }
+  }
+}
+.tab-body {
+  flex-direction: column;
+  /* padding: 1em; */
+  textarea {
+    width: 100%;
+    resize: vertical;
+  }
+  .json-example {
+    display: flex;
+    flex-direction: column;
+    background: #465076;
+    border-radius: 4px;
+    padding: .5em;
+    .json-entry {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      margin: .5em;
+      .json-key {
+        padding: 0 1em 0 1em;
+      }
+      .json-value {
+        padding-right: 1em;
+        code {
+          cursor: pointer;
+        }
+      }
+      .json-description {
+        flex: 1;
+        text-align: right;
+      }
+    }
+    .json-expanded {
+      padding: 1em;
+      border-radius: 4px;
+    }
+  }
+}
+.json-error {
+  padding: .5em;
+}

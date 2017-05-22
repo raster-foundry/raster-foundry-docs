@@ -1,0 +1,10 @@
+version: '2.1'
+services:
+  docs:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    volumes:
+      - ./dist:/opt/rf-docs/dist
+    entrypoint: yarn
+    command: run build

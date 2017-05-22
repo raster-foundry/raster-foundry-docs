@@ -2,31 +2,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
+import { PerfectScrollbarConfigInterface } from 'ngx-perfect-scrollbar';
+import { AuthService } from './services/auth.service';
+import { SettingsService } from './services/settings.service';
 
-import { AppRoutingModule } from './app-routing.module';
+const PERFECT_SCROLLBAR_CONFIG: PerfectScrollbarConfigInterface = {
+  suppressScrollX: true,
+  minScrollbarLength: 75
+};
+
 import { AppComponent } from './app.component';
-import { ApiModule } from './api/api.module';
-import { AppHelpModule } from './app-help/app-help.module';
-import { HomepageComponent } from './homepage/homepage.component';
+import { SidebarModule } from './sidebar/sidebar.module';
+import { TopbarModule } from './topbar/topbar.module';
+import { OperationsModule } from './operations/operations.module';
 
 @NgModule({
   declarations: [
-    AppComponent,
-    HomepageComponent
+    AppComponent
   ],
   imports: [
-    // Angular
     BrowserModule,
     FormsModule,
     HttpModule,
 
-    ApiModule,
-    AppHelpModule,
+    PerfectScrollbarModule.forRoot(PERFECT_SCROLLBAR_CONFIG),
 
-    // This goes last
-    AppRoutingModule,
+    SidebarModule,
+    TopbarModule,
+    OperationsModule
   ],
-  providers: [],
+  providers: [AuthService, SettingsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

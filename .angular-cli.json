@@ -19,9 +19,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.scss"
+        "styles/main.scss",
+        "assets/fonts/fontello/css/fontello.css",
+        "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css"
       ],
-      "scripts": [],
+        "scripts": [
+            "../node_modules/swagger-parser/dist/swagger-parser.js"
+        ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",
@@ -52,6 +56,10 @@
   },
   "defaults": {
     "styleExt": "scss",
-    "component": {}
+    "component": {
+      "spec": false,
+      "inlineStyle": true,
+      "inlineTemplate": true
+    }
   }
 }
