@@ -39,7 +39,7 @@ export class OperationSampleRequestComponent implements OnInit, OnChanges {
 
 
   ngOnInit() {
-    this.domain = this.settingsService.domain;
+    this.domain = this.settingsService.apiUrl;
   }
 
   ngOnChanges(changes) {

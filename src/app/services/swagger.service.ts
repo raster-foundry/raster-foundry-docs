@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { SettingsService } from '../services/settings.service';
 
 declare var SwaggerParser:any;
 
@@ -9,23 +10,11 @@ export class SwaggerService {
   spec: any;
   error: any;
 
-  constructor(private http: Http) { }
+  constructor(private http: Http, private settingsService: SettingsService) { }
 
   public fetchSpec(): Promise<any> {
     return new Promise((resolve, reject) => {
-      let hostname = location.host;
-      let isLocalhost = hostname.includes('localhost');
-      let specUrl: string;
-      if (isLocalhost) {
-        specUrl = 'https://spec.rasterfoundry.com';
-        // specUrl = '/assets/spec.yml'; // uncomment to use assets/spec.yml as the spec instead
-      } else {
-        let parts = hostname.split('.');
-        parts[0] = 'spec';
-        specUrl = 'https://' + parts.join('.');
-      }
-
-      this.http.get(specUrl).subscribe(response => {
+      this.http.get(this.settingsService.specUrl).subscribe(response => {
         try {
           let parsed = SwaggerParser.YAML.parse(response.text());
           SwaggerParser.dereference(parsed).then((file: Object) => {
