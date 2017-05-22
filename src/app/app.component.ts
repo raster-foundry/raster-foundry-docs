@@ -32,6 +32,8 @@ export class AppComponent {
       setTimeout(() => {
         location.hash = loadingHash;
       });
+    }, (error) => {
+      console.error('There was an error while fetching the swagger spec', error);
     });
   }
 }
