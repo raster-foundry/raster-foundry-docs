@@ -1,4 +1,4 @@
-# RasterFoundryDocs
+# raster-foundry-docs
 
 ## Swagger Extensions
 
