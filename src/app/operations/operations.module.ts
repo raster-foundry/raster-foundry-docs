@@ -11,7 +11,7 @@ import { OperationPathComponent } from './operation-path.component';
 import { OperationParametersComponent } from './operation-parameters.component';
 import { OperationSampleRequestComponent } from './operation-sample-request.component';
 import { OperationQueryParameterComponent } from './operation-query-parameter.component';
-import { OperationBodyParameterComponent } from './operation-body-parameter.component';
+import { BodyParamComponent } from './body-param/body-param.component';
 
 @NgModule({
   imports: [
@@ -21,6 +21,6 @@ import { OperationBodyParameterComponent } from './operation-body-parameter.comp
   exports: [
     OperationsContainerComponent
   ],
-  declarations: [OperationContainerComponent, OperationDetailsComponent, OperationSamplesComponent, OperationsContainerComponent, OperationResourceComponent, OperationResourceMethodComponent, OperationPathComponent, OperationParametersComponent, OperationSampleRequestComponent, OperationQueryParameterComponent, OperationBodyParameterComponent]
+  declarations: [OperationContainerComponent, OperationDetailsComponent, OperationSamplesComponent, OperationsContainerComponent, OperationResourceComponent, OperationResourceMethodComponent, OperationPathComponent, OperationParametersComponent, OperationSampleRequestComponent, OperationQueryParameterComponent, BodyParamComponent]
 })
 export class OperationsModule { }

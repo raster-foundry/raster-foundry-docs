@@ -1,11 +1,11 @@
 import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-operation-body-parameter',
-  templateUrl: './operation-body-parameter.html',
-  styleUrls: ['./operation-body-parameter.scss'],
+  selector: 'op-body-param',
+  templateUrl: './body-param.html',
+  styleUrls: ['./body-param.scss'],
 })
-export class OperationBodyParameterComponent implements OnInit {
+export class BodyParamComponent implements OnInit {
 
   private parametersJson: string;
   private errorMessage: string;

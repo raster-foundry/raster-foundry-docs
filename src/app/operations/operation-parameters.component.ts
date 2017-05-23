@@ -14,10 +14,10 @@ import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@an
       [parameter]="parameter"
       (onChange)="onQueryParamChange($event)"></app-operation-query-parameter>
     <h4 *ngIf="bodyParams && bodyParams.length">Request Body</h4>
-    <app-operation-body-parameter
+    <op-body-param
       *ngIf="bodyParams && bodyParams.length"
       [parameters]="bodyParams"
-      (onChange)="onBodyParamChange($event)"></app-operation-body-parameter>
+      (onChange)="onBodyParamChange($event)"></op-body-param>
   `
 })
 export class OperationParametersComponent implements OnInit {

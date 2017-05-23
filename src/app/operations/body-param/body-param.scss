@@ -16,40 +16,46 @@
 }
 .tab-body {
   flex-direction: column;
-  /* padding: 1em; */
+
   textarea {
     width: 100%;
     resize: vertical;
   }
+
   .json-example {
     display: flex;
     flex-direction: column;
     background: #465076;
     border-radius: 4px;
     padding: .5em;
-    .json-entry {
-      flex: 1;
-      display: flex;
-      flex-direction: row;
-      margin: .5em;
-      .json-key {
-        padding: 0 1em 0 1em;
-      }
-      .json-value {
-        padding-right: 1em;
-        code {
-          cursor: pointer;
-        }
-      }
-      .json-description {
-        flex: 1;
-        text-align: right;
-      }
+  }
+
+  .json-entry {
+    flex: 1;
+    display: flex;
+    flex-direction: row;
+    margin: .5em;
+  }
+
+  .json-key {
+    padding: 0 1em 0 1em;
+  }
+
+  .json-value {
+    padding-right: 1em;
+    code {
+      cursor: pointer;
     }
-    .json-expanded {
-      padding: 1em;
-      border-radius: 4px;
-    }
+  }
+
+  .json-description {
+    flex: 1;
+    text-align: right;
+  }
+
+  .json-expanded {
+    padding: 1em;
+    border-radius: 4px;
   }
 }
 .json-error {
