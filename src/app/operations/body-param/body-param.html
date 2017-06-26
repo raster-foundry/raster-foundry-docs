@@ -39,13 +39,38 @@
               </code>
             </div>
           </div>
-          <div class="json-value">
+          <div class="json-value" *ngIf="getParameterType(property) === 'string'">
             <input
               type="text"
               class="form-control"
               [placeholder]="property.description"
             >
           </div>
+          <div class="json-value" *ngIf="getParameterType(property) === 'boolean'">
+            <span class="btn-group">
+              <button type="button" class="btn btn-outline">true</button>
+              <button type="button" class="btn btn-outline">false</button>
+            </span>
+          </div>
+          <div class="json-value" *ngIf="getParameterType(property) === 'array'">
+            <button type="button" class="btn btn-outline">
+              +
+            </button>
+          </div>
+          <div class="json-value" *ngIf="getParameterType(property) === 'object'">
+            <button type="button" class="btn btn-outline">
+              {{'{...}'}}
+            </button>
+          </div>
+        </div>
+        <div class="json-entry" *ngIf="getParameterType(property) !== 'string'">
+          <div class="json-label"></div>
+          <div class="json-value">
+            {{property.description}}
+          </div>
+        </div>
+        <div *ngIf="getParameterType(property) === 'object'">
+            <textarea style="width: 100%;"></textarea>
         </div>
       </ng-container>
     </ng-container>

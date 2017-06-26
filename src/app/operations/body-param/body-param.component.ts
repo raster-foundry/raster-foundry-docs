@@ -1,5 +1,4 @@
 import { Component, HostBinding, Input, Output, EventEmitter, OnInit } from '@angular/core';
-
 @Component({
   selector: 'op-body-param',
   templateUrl: './body-param.html',
@@ -33,11 +32,23 @@ export class BodyParamComponent implements OnInit {
   isObjectParameter(parameter): boolean {
     return parameter.type === 'object' ||
       parameter.schema && !parameter.schema.type ||
-      parameter.schema.type === 'object';
+      parameter.schema && parameter.schema.type === 'object';
   }
 
   isArrayParameter(parameter): boolean {
-    return parameter.type === 'array' || parameter.schema && parameter.schema.type === 'array';
+    return parameter.type.includes('array') ||
+      parameter.schema && parameter.schema.type.includes('array');
+  }
+
+  getParameterType(parameter): string {
+    if (this.isObjectParameter(parameter)) {
+      return 'object';
+    } else if (this.isArrayParameter(parameter)) {
+      return 'array';
+    } else if (parameter.type) {
+      return parameter.type;
+    }
+    return 'other';
   }
 
   getParameterProperties(parameter) {

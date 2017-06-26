@@ -106,6 +106,20 @@
   }
 }
 
+.btn-outline {
+  border-radius: 3px;
+  border-color: $brand-primary;
+  color: $brand-primary;
+  background-color: $shade-normal;
+
+  &:hover, &.hover,
+  &:active, &.active, {
+    background: $brand-primary;
+    border-color: $brand-primary;
+    color: $shade-normal;
+  }
+}
+
 .btn-warning {
   background: $warning;
   border-color: darken($warning, 5%);
