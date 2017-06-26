@@ -42,6 +42,7 @@ export class BodyParamComponent implements OnInit {
 
   getParameterType(parameter): string {
     if (this.isObjectParameter(parameter)) {
+      console.log(parameter);
       return 'object';
     } else if (this.isArrayParameter(parameter)) {
       return 'array';
@@ -67,8 +68,17 @@ export class BodyParamComponent implements OnInit {
     }
   }
 
+  getObjectParameterProperties(parameter) {
+    return Object.keys(parameter.properties).map((key) => {
+      return {
+        key: key,
+        property: parameter[key]
+      }
+    })
+  }
+
   combineSchemaProperties(parameter) {
-    let schema = parameter.schema
+    let schema = parameter.schema;
     let properties: any[] = [];
 
     function concatPropsForItem(schemaItem) {

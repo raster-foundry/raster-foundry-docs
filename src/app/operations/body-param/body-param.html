@@ -70,7 +70,19 @@
           </div>
         </div>
         <div *ngIf="getParameterType(property) === 'object'">
-            <textarea style="width: 100%;"></textarea>
+          <div class="json-entry" *ngFor="let subProperty of getObjectParameterProperties(property)">
+            <div class="json-label">
+              <div class="json-key">{{subProperty.key}}</div>
+              <div class="json-type">
+                <code class="parameter-type {{subProperty.property.type}}">
+            {{subProperty.property.type ||
+              subProperty.property.name + ' schema' }}
+                </code>
+              </div>
+            </div>
+            <div class="json-entry">
+            </div>
+          </div>
         </div>
       </ng-container>
     </ng-container>
