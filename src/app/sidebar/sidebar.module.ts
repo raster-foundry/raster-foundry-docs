@@ -5,12 +5,9 @@ import { SidebarSectionComponent } from './sidebar-section.component';
 import { SidebarResourceItemComponent } from './sidebar-resource-item.component';
 import { SidebarItemComponent } from './sidebar-item.component';
 
-import { PerfectScrollbarModule } from 'ngx-perfect-scrollbar';
-
 @NgModule({
   imports: [
-    CommonModule,
-    PerfectScrollbarModule.forChild()
+    CommonModule
   ],
   exports: [
     SidebarContainerComponent
