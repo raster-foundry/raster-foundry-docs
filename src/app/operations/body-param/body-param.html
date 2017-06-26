@@ -33,16 +33,19 @@
             </div>
             <div class="json-type">
               <code class="parameter-type {{property.type || property.schema && 'object'}}">
-            {{property.type || property.schema && property.schema.type || property.name + ' schema' }}
+            {{property.type ||
+              property.schema && property.schema.type ||
+              property.name + ' schema' }}
               </code>
             </div>
           </div>
           <div class="json-value">
-            <input type="text" class="form-control">
+            <input
+              type="text"
+              class="form-control"
+              [placeholder]="property.description"
+            >
           </div>
-        </div>
-        <div class="json-description" *ngIf="property.description">
-          {{property.description}}
         </div>
       </ng-container>
     </ng-container>

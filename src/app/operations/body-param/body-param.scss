@@ -39,6 +39,7 @@
   .json-label {
     text-align: right;
     display: table-cell;
+    vertical-align: middle;
 
     .json-key {
       padding: 0 1em 0 1em;
@@ -55,6 +56,8 @@
   .json-value {
     display: table-cell;
     width: 100%;
+    vertical-align: middle;
+    padding: .25em 0 .25em 0;
   }
 
 
