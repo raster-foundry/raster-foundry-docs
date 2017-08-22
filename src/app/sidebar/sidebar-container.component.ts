@@ -7,7 +7,7 @@ import { SwaggerService } from '../services/swagger.service';
     <header>
       <div class="logo">
         <a href="#" class="icon">
-          <img src="assets/images/raster-foundry-logo.png">
+          <img src="assets/images/logo.svg">
         </a>
         <a href="#" class="path">
           API

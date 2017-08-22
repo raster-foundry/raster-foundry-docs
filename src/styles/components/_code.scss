@@ -5,9 +5,10 @@ code, kbd, pre, samp {
 
 pre {
   padding: 1rem 2rem;
-  background: $shade-normal;
+  background: rgba($gray, .7);
   border-radius: 4px;
-  font-size: 13px;
+  font-size: 14px;
+  color: $color-4;
   white-space: pre-wrap;
   word-break: break-word;
   word-spacing: normal;

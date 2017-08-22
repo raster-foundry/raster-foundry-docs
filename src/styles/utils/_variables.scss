@@ -4,33 +4,44 @@
  */
 
 // Brand Colors:
-$brand-primary: #738FFC;   // purple
-$brand-secondary: #2FC1D0; // green
-$brand-blue: #53b1e0;
+$white: #fff;
+$black: #000;
+$color-1: #0b5fbf;
+$color-2: #ff820f;
+$color-3: #0021a3;
+$color-4: #2f343b;
+$color-5: #4caf50;
+$color-6: #e84b30;
+
+
+$brand-primary: $color-1;
+$brand-blue: $color-1;
+
+$brand-secondary: $color-2;
+$link-color: $color-2;
 
 // Base Colors:
-$text-base: #959CAC;
-$shade-light: $text-base;  // $text-base
-$shade-normal: #465076; // deep purple
-$shade-dark: #353C58;   // deepdeep purple
+$text-base: $color-4;
+$shade-light: $color-4;
+$shade-normal: $color-4;
+$shade-dark: $black;
 
 // Data types:
-$data-string: $brand-blue;
-$data-number: #dd8f54;
-$data-integer: #dd8f54;
+$data-string: $color-1;
+$data-number: $color-2;
+$data-integer: $color-2;
 $data-boolean: #b22fd0;
 $data-array: #9e54dd;
 
 // Login modal colors:
 $gray: #e8e7ef;
 $gray-light: #eff0f4;
-$link-color: $brand-secondary;
-$white: #fff;
+
 
 // Action Colors:
-$warning: #E69348; // orange
-$danger: #F98094;  // red
-$success: #21ce90;  // red
+$warning: $color-2;
+$danger: $color-6;
+$success: $color-5;
 
 // Border Radius
 $border-radius-base: 2px;

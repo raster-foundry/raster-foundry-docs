@@ -55,8 +55,9 @@
 }
 
 .operation-samples {
-  background-color: $shade-dark;
-  border-bottom: 1px solid $shade-normal;
+  background-color: rgba($color-4, .05);
+  border-left: 1px solid $gray;
+  border-bottom: 1px solid $gray;
 }
 
 .definition {
@@ -117,7 +118,7 @@
   padding: 2px 8px;
   display: inline-block;
   font-size: 1rem;
-  border-radius: 4px;
+  border-radius: 10px;
   border: 1px solid $brand-blue;
   color: $brand-blue;
 
@@ -153,7 +154,7 @@
 .parameter-description {
   padding: 1rem 2rem;
   border-top: 1px solid $gray;
-  background: $gray-light;
+  background: rgba($gray, .5);
   flex: none;
   width: 100%;
 }
@@ -178,4 +179,31 @@
 
 .sample-block {
   padding: 2rem 0;
+}
+
+.tab-body {
+  .json-example {
+    background-color: $white !important;
+  }
+
+  textarea {
+    border-bottom: 0 !important;
+    padding: rem(20px);
+
+    &:hover {
+      border-bottom: 0 !important;
+    }
+  }
+}
+
+.tab-header {
+  border-bottom: 1px solid $gray;
+
+  .tab-select {
+    background-color: rgba($color-4, .5);
+
+    &.active {
+      background-color: $white;
+    }
+  }
 }

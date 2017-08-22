@@ -1,0 +1,126 @@
+// fonts settings
+@import url('https://fonts.googleapis.com/css?family=Lora:400,700');
+
+$font-family-1: 'Lora', serif;;
+$font-family-2: 'ProximaNova';
+
+$font-weight-light: 300;
+$font-weight-regular: 400;
+$font-weight-semibold: 600;
+$font-weight-bold: 700;
+
+$ff1-size-m: 16px;
+
+$ff2-size-xs: 12px;
+$ff2-size-s: 14px;
+$ff2-size-m: 16px;
+$ff2-size-xm: 20px;
+$ff2-size-l: 32px;
+$ff2-size-xl: 46px;
+
+@font-face {
+  font-family: $font-family-2;
+  font-weight: $font-weight-semibold;
+  src: url('../fonts/ProximaNova-Semibold.otf') format('embedded-opentype'),
+  url('../fonts/ProximaNova-Semibold.otf');
+}
+
+@font-face {
+  font-family: $font-family-2;
+  font-weight: $font-weight-light;
+  src: url('../fonts/ProximaNova-Light.otf') format('embedded-opentype'),
+  url('../fonts/ProximaNova-Light.otf');
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.text {
+  color: $black;
+  font-family: $font-family-2;
+  letter-spacing: 1px;
+
+  &.-ff2-xl {
+    font-size: $ff2-size-xl;
+    font-weight: $font-weight-semibold;
+    line-height: 1.09;
+  }
+
+  &.-ff1-l {
+    font-size: $ff2-size-l;
+    font-weight: $font-weight-light;
+    line-height: 1.13;
+  }
+
+  &.-ff2-l {
+    font-size: $ff2-size-l;
+    font-weight: $font-weight-light;
+    line-height: 1.13;
+    letter-spacing: normal;
+  }
+
+  &.-ff1-m {
+    font-family: $font-family-1;
+    font-size: $ff1-size-m;
+    line-height: 1.75;
+    letter-spacing: normal;
+  }
+
+  &.-ff2-m {
+    font-size: $ff2-size-m;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 1.3px;
+  }
+
+  &.-ff2-xm {
+    font-size: $ff2-size-xm;
+    font-weight: $font-weight-semibold;
+    letter-spacing: 1.3px;
+  }
+
+  &.-ff2-s {
+    font-size: $ff2-size-s;
+    font-weight: $font-weight-semibold;
+  }
+
+  &.-ff2-xs {
+    font-size: $ff2-size-xs;
+    font-weight: $font-weight-semibold;
+    line-height: 1.67;
+  }
+
+  &.-color-2 {
+    color: $color-2;
+  }
+
+  &.-color-1 {
+    color: $color-1;
+  }
+
+  &.-white {
+    color: $white;
+  }
+
+  &.-error {
+    color: $color-6;
+  }
+
+  &.-uppercase {
+    text-transform: uppercase;
+  }
+
+  &.-center {
+    display: block;
+    text-align: center;
+  }
+
+  &.-underline,
+  .-underline {
+    background-image: linear-gradient(to right, $color-2 100%, transparent 100%);
+    background-position: 0 1.07em;
+    background-repeat: repeat-x;
+    background-size: 10px 2px;
+  }
+}
