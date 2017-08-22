@@ -1,27 +1,17 @@
-@mixin heading-tags {
-  h1, h2, h3, h4, h5, h6,
-  .h1, .h2, .h3, .h4, .h5, .h6 {
-    @content;
-  }
-}
 
-@include heading-tags {
-  margin-bottom: 1rem;
-  line-height: 1.1;
-  font-family: 'Titillium Web', sans-serif;
-  color: $shade-dark;
-  font-weight: 600;
-}
+
 
 h1, h2, h3,
 .h1, .h2, .h3 {
   margin-top: 2rem;
   margin-bottom: 3.5rem;
+  font-family: $font-family-2;
 }
 
 h4, h5, h6,
 .h4, .h5, .h6 {
   margin-top: 1.3rem;
+  font-family: $font-family-2;
 }
 
 h1, .h1 {
@@ -41,7 +31,8 @@ h4, .h4 {
 }
 
 h5, .h5 {
-  font-size: 1.6rem;
+  font-size: rem(24px);
+  line-height: 1.5;
 }
 
 h6, .h6 {
@@ -50,21 +41,19 @@ h6, .h6 {
 
 p, .p {
   font-size: 1.4rem;
-  font-weight: 400;
+  font-weight: 200;
   line-height: 1.8;
   margin-top: 1rem;
   margin-bottom: 2.5rem;
+  font-family: $font-family-2;
 }
 
 a {
   text-decoration: none;
   font-weight: 400;
-  color: $shade-normal;
+  color: $color-4;
+  font-family: $font-family-2;
 
-  &:hover {
-    color: $shade-light;
-    cursor: pointer;
-  }
 
   &:disabled, &.disabled, &[disabled] {
     opacity: .5;
@@ -76,20 +65,12 @@ a {
   }
 
   &.selected, &.active {
-    color: $brand-primary;
+    color: $color-1;
   }
 }
 
 .font-size-small {
   font-size: 1.3rem;
-}
-
-.font-base {
-  font-family: 'Open Sans', sans-serif;
-}
-
-.font-header {
-  font-family: 'Titillium Web', sans-serif;
 }
 
 .text-uppercase {

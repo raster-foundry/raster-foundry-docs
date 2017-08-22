@@ -4,8 +4,7 @@
   flex-direction: column;
   width: 30rem;
   padding: 0;
-  background: $gray-light;
-  border-right: 1px solid $gray;
+  background: $white;
   height: 100vh;
 
   header {
@@ -18,9 +17,11 @@
 .sidebar-nav {
   flex: 1;
   overflow: auto;
+  border-right: solid 2px rgba($gray, .5);
 
   a {
     display: block;
+    font-weight: $font-weight-bold;
     padding: .5rem 2rem;
     white-space: nowrap;
     overflow: hidden;
@@ -31,6 +32,8 @@
 .sidebar-nav-heading {
   @extend .h5;
   margin: 2rem 0 0 0;
+  font-weight: $font-weight-bold;
+  text-transform: uppercase;
 }
 
 .sidebar-nav-items {
@@ -44,6 +47,7 @@
     height: 0;
 
     a {
+      font-weight: $font-weight-light;
       padding-left: 3.5rem;
     }
   }
