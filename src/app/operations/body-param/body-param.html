@@ -2,7 +2,7 @@
   <div class="tab-select"
        (click)="showJson = false"
        [ngClass]="{'active': !showJson}">
-    Format
+    Form
   </div>
   <div class="tab-select"
        (click)="showJson = true"
@@ -39,49 +39,40 @@
               </code>
             </div>
           </div>
-          <div class="json-value" *ngIf="getParameterType(property) === 'string'">
+          <div class="json-value" >
+            <div class="json-description"
+                 *ngIf="getParameterType(property) !== 'string' && property.description">
+              {{property.description}}
+            </div>
             <input
               type="text"
               class="form-control"
               [placeholder]="property.description"
-            >
-          </div>
-          <div class="json-value" *ngIf="getParameterType(property) === 'boolean'">
-            <span class="btn-group">
+              *ngIf="getParameterType(property) === 'string'">
+            <span class="btn-group json-object-prop"
+                  *ngIf="getParameterType(property) === 'boolean'">
               <button type="button" class="btn btn-outline">true</button>
               <button type="button" class="btn btn-outline">false</button>
             </span>
-          </div>
-          <div class="json-value" *ngIf="getParameterType(property) === 'array'">
-            <button type="button" class="btn btn-outline">
-              +
-            </button>
-          </div>
-          <div class="json-value" *ngIf="getParameterType(property) === 'object'">
-            <button type="button" class="btn btn-outline">
-              {{'{...}'}}
-            </button>
-          </div>
-        </div>
-        <div class="json-entry" *ngIf="getParameterType(property) !== 'string'">
-          <div class="json-label"></div>
-          <div class="json-value">
-            {{property.description}}
-          </div>
-        </div>
-        <div *ngIf="getParameterType(property) === 'object'">
-          <div class="json-entry" *ngFor="let subProperty of getObjectParameterProperties(property)">
-            <div class="json-label">
-              <div class="json-key">{{subProperty.key}}</div>
-              <div class="json-type">
-                <code class="parameter-type {{subProperty.property.type}}">
-            {{subProperty.property.type ||
-              subProperty.property.name + ' schema' }}
-                </code>
+            <div class="json-object-prop" *ngIf="getParameterType(property) === 'array'">
+              <button type="button" class="btn btn-outline">
+                +
+              </button>
+            </div>
+            <span *ngIf="getParameterType(property) === 'object'">
+              <div class="json-object-prop" *ngIf="getObjectParameterProperties(property).length">
+                <button type="button" class="btn btn-outline"
+                        *ngFor="let subProperty of getObjectParameterProperties(property)">
+                  {{subProperty.key}} : {{subProperty.property.type}}
+                </button>
               </div>
-            </div>
-            <div class="json-entry">
-            </div>
+              <div class="json-object-prop"
+                   *ngIf="getObjectParameterProperties(property).length < 1">
+                <button type="button" class="btn btn-outline">
+                  {{'{ raw object }'}}
+                </button>
+              </div>
+            </span>
           </div>
         </div>
       </ng-container>

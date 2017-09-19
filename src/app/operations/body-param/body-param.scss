@@ -28,6 +28,9 @@
     border-radius: 4px;
     padding: .5em;
     width: 100%;
+    :nth-child(even).json-entry {
+      background: #353c58;
+    }
   }
 
   .json-entry {
@@ -39,14 +42,15 @@
   .json-label {
     text-align: right;
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
+    padding-top: 0.5em;
 
     .json-key {
       padding: 0 1em 0 1em;
     }
 
     .json-type {
-      padding-right: 1em;
+      padding: 0 1em 1em 1em;
       code {
         cursor: pointer;
       }
@@ -56,14 +60,23 @@
   .json-value {
     display: table-cell;
     width: 100%;
-    vertical-align: middle;
-    padding: .25em 0 .25em 0;
+    vertical-align: top;
+    padding: .5em 0 .5em 0;
+  }
+
+  .json-object-prop {
+    &.btn-group {
+      margin: 0 0 0.5em 0.5em;
+    }
+    .btn {
+      margin: 0 0.5em 0.5em 0.5em;
+    }
   }
 
 
   .json-description {
-    text-align: right;
-    padding: 1em;
+    padding: 0 0 1em 0.5em;
+    padding-bottom: 1em;
   }
 
   .json-expanded {
