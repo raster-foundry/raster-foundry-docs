@@ -49,6 +49,12 @@
               class="form-control"
               [placeholder]="property.description"
               *ngIf="getParameterType(property) === 'string'">
+            <input
+              type="number"
+              step="any"
+              class="form-control"
+              placeholder="Number"
+              *ngIf="getParameterType(property) === 'number'">
             <span class="btn-group json-object-prop"
                   *ngIf="getParameterType(property) === 'boolean'">
               <button type="button" class="btn btn-outline">true</button>
