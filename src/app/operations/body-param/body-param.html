@@ -65,20 +65,10 @@
                 +
               </button>
             </div>
-            <span *ngIf="getParameterType(property) === 'object'">
-              <div class="json-object-prop" *ngIf="getObjectParameterProperties(property).length">
-                <button type="button" class="btn btn-outline"
-                        *ngFor="let subProperty of getObjectParameterProperties(property)">
-                  {{subProperty.key}} : {{subProperty.property.type}}
-                </button>
-              </div>
-              <div class="json-object-prop"
-                   *ngIf="getObjectParameterProperties(property).length < 1">
-                <button type="button" class="btn btn-outline">
-                  {{'{ raw object }'}}
-                </button>
-              </div>
-            </span>
+            <op-body-param-details 
+              [parameter]="property"
+              *ngIf="getParameterType(property) === 'object'">
+            </op-body-param-details>
           </div>
         </div>
       </ng-container>
