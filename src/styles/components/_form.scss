@@ -12,7 +12,7 @@ label {
   max-width: 100%;
   margin-bottom: 5px;
   display: inline-block;
-  color: $text-base;
+  color: $shade-dark;
 }
 
 .form-control {
@@ -21,11 +21,11 @@ label {
   height: 4.8rem;
   padding: 6px 12px;
   font-size: 1.4rem;
-  color: $text-base;
+  color: $shade-dark;
   font-weight: 600;
   background-color: #fff;
   background-image: none;
-  border: 1px solid #ddd;
+  border: 1px solid $shade-normal;
   border-radius: 2px;
 
   &:focus {

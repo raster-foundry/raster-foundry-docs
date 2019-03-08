@@ -6,11 +6,12 @@
     padding: 0.5em;
     flex: 1;
     text-align: center;
-    background: #f3f3f3;
+    background: none;
     cursor: pointer;
     &.active {
       cursor: auto;
-      background: initial;
+      background: #fff;
+      border-radius: 4px 4px 0 0;
     }
   }
 }
@@ -20,11 +21,12 @@
   textarea {
     width: 100%;
     resize: vertical;
+    border: none;
   }
   .json-example {
     display: flex;
     flex-direction: column;
-    background: #465076;
+    background: #ffffff;
     border-radius: 4px;
     padding: .5em;
     .json-entry {
@@ -34,11 +36,13 @@
       margin: .5em;
       .json-key {
         padding: 0 1em 0 1em;
+        font-weight: 600;
       }
       .json-value {
-        padding-right: 1em;
+        order: -1;
         code {
-          cursor: pointer;
+          min-width: 70px;
+          text-align: center;
         }
       }
       .json-description {

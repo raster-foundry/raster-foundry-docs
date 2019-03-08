@@ -22,9 +22,9 @@
   a {
     display: block;
     padding: .5rem 2rem;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+    line-height: 1.5;
+    position: relative;
+    font-weight: 600;
   }
 }
 
@@ -45,6 +45,18 @@
 
     a {
       padding-left: 3.5rem;
+      font-weight: 400;
+
+      &:before {
+        content: '├';
+        left: 15px;
+        position: absolute;
+        font-weight: 300;
+      }
+    }
+
+    a:last-of-type:before {
+      content: '└';
     }
   }
 

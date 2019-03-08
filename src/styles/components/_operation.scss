@@ -91,20 +91,26 @@
 .parameter {
   padding-top: 1rem;
   display: flex;
-  flex-wrap: wrap;
-  border: 1px solid $gray;
-  border-radius: 4px;
-  margin-top: 1rem;
-  &.body {
-    flex-direction: column;
-    padding-top: 0;
+  flex-direction: column;
+  padding: 1rem;
+  background: #eff0f4;
+  color: #444f77;
+  margin-top: 1px;
+
+  &:first-of-type {
+    border-radius: 4px 4px 0 0;
+  }
+
+  &:last-of-type {
+    border-radius: 0 0 4px 4px;
   }
 }
 
 .parameter-details {
-  width: 30%;
-  text-align: right;
-  flex: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
 
 .parameter-name {
@@ -140,8 +146,26 @@
 }
 
 .parameter-input {
-  padding: .5rem 2rem;
   flex: 1;
+  position: relative;
+  display: flex;
+  align-items: stretch;
+
+  .form-control {
+    border-radius: 4px 0 0 4px;
+  }
+
+  .parameter-requirement {
+    font-size: 12px;
+    line-height: 1;
+    background: white;
+    border: 1px solid $shade-normal;
+    border-left: none;
+    display: flex;
+    align-items: center;
+    padding: 6px;
+    border-radius: 0 4px 4px 0;
+  }
 }
 
 .parameter-requirement {
@@ -151,11 +175,7 @@
 }
 
 .parameter-description {
-  padding: 1rem 2rem;
-  border-top: 1px solid $gray;
-  background: $gray-light;
-  flex: none;
-  width: 100%;
+  margin-top: 5px;
 }
 
 .responses {
