@@ -20,8 +20,7 @@
       "prefix": "app",
       "styles": [
         "styles/main.scss",
-        "assets/fonts/fontello/css/fontello.css",
-        "../node_modules/perfect-scrollbar/dist/css/perfect-scrollbar.css"
+        "assets/fonts/fontello/css/fontello.css"
       ],
         "scripts": [
             "../node_modules/swagger-parser/dist/swagger-parser.js"
